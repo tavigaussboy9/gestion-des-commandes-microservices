@@ -4,17 +4,17 @@ services:
     build:
       context: ./services/order-service
     ports:
-      - '3001:3001'
+      - '3001:3001'  # Port mapping for order service
   stock-service:
     build:
       context: ./services/stock-service
     ports:
-      - '3002:3002'
+      - '3002:3002'  # Port mapping for stock service
   shipping-service:
     build:
       context: ./services/shipping-service
     ports:
-      - '3003:3003'
+      - '3003:3003'  # Port mapping for shipping service
   database:
     image: postgres
     environment:
@@ -22,9 +22,9 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: orders
     ports:
-      - '5432:5432'
+      - '5432:5432'  # Port mapping for Postgres database
   rabbitmq:
     image: rabbitmq
     ports:
-      - '5672:5672'
-      - '15672:15672'
+      - '5672:5672'    # Port for RabbitMQ
+      - '15672:15672'  # Port for RabbitMQ management
