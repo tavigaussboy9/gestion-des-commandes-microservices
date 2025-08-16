@@ -28,3 +28,12 @@ services:
     ports:
       - '5672:5672'    # Port for RabbitMQ messaging
       - '15672:15672'  # Port for RabbitMQ management console
+
+  # Service dependencies for ensuring startup order
+  depends_on:
+    order-service:
+      - database
+    stock-service:
+      - database
+    shipping-service:
+      - database
