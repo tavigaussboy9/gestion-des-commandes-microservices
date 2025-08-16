@@ -33,13 +33,13 @@ services:
   depends_on:
     order-service:
       condition: service_healthy
-      - database
     stock-service:
       condition: service_healthy
-      - database
     shipping-service:
       condition: service_healthy
-      - database
+    # All services depend on the database to be healthy
+    database:
+      condition: service_healthy
 
   # Healthcheck for Postgres database to ensure it's ready before other services
   healthcheck:
