@@ -18,13 +18,13 @@ services:
   database:
     image: postgres
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: orders
+      POSTGRES_USER: user  # User for Postgres database
+      POSTGRES_PASSWORD: password  # Password for Postgres database
+      POSTGRES_DB: orders  # Database name
     ports:
       - '5432:5432'  # Port mapping for Postgres database
   rabbitmq:
     image: rabbitmq
     ports:
       - '5672:5672'    # Port for RabbitMQ
-      - '15672:15672'  # Port for RabbitMQ management
+      - '15672:15672'  # Port for RabbitMQ management console
