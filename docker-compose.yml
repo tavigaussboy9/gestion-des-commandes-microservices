@@ -32,8 +32,18 @@ services:
   # Service dependencies for ensuring startup order
   depends_on:
     order-service:
+      condition: service_healthy
       - database
     stock-service:
+      condition: service_healthy
       - database
     shipping-service:
+      condition: service_healthy
       - database
+
+  # Healthcheck for Postgres database to ensure it's ready before other services
+  healthcheck:
+    test: [ 'CMD', 'pg_isready', '-U', 'user' ]
+    interval: 5s
+    timeout: 3s
+    retries: 2
